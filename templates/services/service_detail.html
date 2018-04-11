@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+  {% block content%}
+          <div class="container">
+              <div class="jumbotron">
+              <div class="row">
+                
+                <div class="col-md-6"><img  class="img-fluid"  src={{object.Service_Image.url}} style="max-height : auto" />
+                </div>
+                
+                <div class="col-md-6"><h1>{{object.Service_Name}}</h1>
+                    <span class = "text-muted">Service Subcategory :</span>
+                    <p>{{object.Service_Subcategory}}</p>
+                    <span class = "text-muted"> Service Description : </span>
+                      <p>{{object.Service_Description}}</p> 
+                </div>
+              </div> 
+              </div>
+          </div>
+
+  {% endblock %}
+

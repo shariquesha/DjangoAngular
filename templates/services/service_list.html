@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+        
+             <div class="container">
+                {% for services in object_list %}
+                    <div class="card">
+                        <div class="card-header">{{services.Service_Name}}</div>
+                        <div class="card-body">
+                            <div class="row">
+                              
+                              <div class="col-md-6"><img  class="img-fluid" src={{services.Service_Image.url}} />
+                              </div>
+                              
+                              <div class="col-md-6">{{services.Service_Subcategory}}</div>
+                            </div>
+                        </div>
+                        <div class="card-footer"><a href="{% url 'service_detail' services.pk %}" class="card-link">Details{{services.Service_Name}}</a>
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+             </div>
+
+  {% endblock %}
