@@ -1,0 +1,11 @@
+<h2>Login In</h2>
+
+<form #frm="ngForm" (ngSubmit)="loginClicked(frm.value)">
+  User Name:<br>
+  <input type="text" name="username" value="Mickey" ngModel>
+  <br>
+  User Password:<br>
+  <input type="text" name="password" value="Mouse" ngModel>
+  <br><br>
+  <input type="submit" value="Login">
+</form>

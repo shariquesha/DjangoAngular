@@ -1,0 +1,19 @@
+    <table class="table table-dark table-hover">
+    <tbody *ngFor = "let i of users" >
+      <tr>
+        <td>
+          <form #frm="ngForm" (ngSubmit)="upate(frm.value)">
+              <input type="hidden" name="id" [(ngModel)]="i.id"><br>
+              <label>User Name</label><br>
+              <input type="text" name="username" [(ngModel)]="i.username"><br>
+              <label>Email</label><br>
+              <input type="text" name="email" [(ngModel)]="i.email"><br>
+              <input type="submit" value="Update"><br>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+

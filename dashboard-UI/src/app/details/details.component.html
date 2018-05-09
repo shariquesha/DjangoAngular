@@ -1,0 +1,37 @@
+    <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>User Details</th>
+      </tr>
+    </thead>
+    <tbody *ngFor = "let i of users" >
+      <tr>
+        <td>
+          <form #frm="ngForm" (ngSubmit)="add(frm.value)">
+              <input type="hidden" name="id" [(ngModel)]="i.id"><br>
+              <label>First_Name</label><br>
+              <input type="text" name="First_Name" [(ngModel)]="i.First_Name"><br>
+              <label>Last_Name</label><br>
+              <input type="text" name="Last_Name" [(ngModel)]="i.Last_Name"><br>
+              <label>Street_Name</label><br>
+              <input type="text" name="Street_Name" [(ngModel)]="i.Street_Name"><br>
+              <label>City_Name</label><br>
+              <input type="text" name="City_Name" [(ngModel)]="i.City_Name"><br>
+              <label>State_Name</label><br>
+              <input type="text" name="State_Name" [(ngModel)]="i.State_Name"><br>
+              <label>Country_Name</label><br>
+              <input type="text" name="Country_Name" [(ngModel)]="i.Country_Name"><br>
+              <label>PinCode</label><br>
+              <input type="text" name="PinCode" [(ngModel)]="i.PinCode"><br>
+              <label>Mobile_Number</label><br>
+              <input type="text" name="Mobile_Number" [(ngModel)]="i.Mobile_Number"><br>
+              <input type="submit" value="Update"><br>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
