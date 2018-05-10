@@ -41,8 +41,7 @@ export class DetailsComponent implements OnInit {
 
   const uploadData = new FormData();
   uploadData.append('Profile_Image', this.Profile_Image, this.Profile_Image.name);
-  this.detailservice.updateUsers(post,uploadData).subscribe(data=>console.log('Form submitted Successfully'))
-
-
+  this.detailservice.updateUsers(post,uploadData).subscribe(data=>console.log('form submitted successfully'))
+}
 
 }
