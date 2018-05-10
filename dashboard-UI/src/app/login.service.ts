@@ -13,11 +13,11 @@ private _url: string = "http://127.0.0.1:8000"
 
    loginUsers(data : any):Observable<IUser[]>
   {
-     // alert(JSON.stringify(data));
+     alert(JSON.stringify(data));
 
    let headers = new HttpHeaders();
    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-   return this.http.post<IUser[]>(this._url+"/authenticate/",JSON.stringify(data),{
+   return this.http.post<IUser[]>(this._url+"/authenticate",data,{
       headers: headers
     });
   }

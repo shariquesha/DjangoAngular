@@ -35,7 +35,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
             )
         # fields = '__all__'
         extra_kwargs = {'User_id.password' : {'write_only': True, 'required': True}}
-        # depth = 1
+        depth = 1
 
     def create(self, validated_data):
         user_detail = models.User_Details.objects.create(**validated_data)

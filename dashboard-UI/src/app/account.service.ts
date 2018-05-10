@@ -24,10 +24,13 @@ export class AccountService {
    var id = data['id']
    delete data['id']
 
-   alert(JSON.stringify(data))
-   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+   // alert(JSON.stringify(data))
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers.append('Access-Control-Allow-Methods', '*');
+    headers.append('Access-Control-Allow-Origin', '*');
 
-   return this.http.put<IAccount[]>(this._url+"/users/", JSON.stringify(data),{
+
+   return this.http.patch<IAccount[]>(this._url+"/users/"+ id +"/", JSON.stringify(data),{
       headers: headers
     });
   }

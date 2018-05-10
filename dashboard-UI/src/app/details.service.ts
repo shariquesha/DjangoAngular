@@ -15,7 +15,7 @@ export class DetailsService {
   getUsers():Observable<I_Details[]>
   {
 
-      return this.http.get<I_Details[]>(this._url+"/details");
+      return this.http.get<I_Details[]>(this._url+"/details/", this.getAuthHeaders());
   }
 
 
@@ -26,12 +26,17 @@ export class DetailsService {
    var id = data['id']
    delete data['id']
 
-   // alert(JSON.stringify(data))
-   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-   return this.http.put<I_Details[]>(this._url+"/details/"+ id+"/", JSON.stringify(data),{
-      headers: headers
-    });
+
+   return this.http.put<I_Details[]>(this._url+"/details/"+ id+"/",JSON.stringify(data), this.getAuthHeaders())
+  }
+
+   private getAuthHeaders() {
+    const token = localStorage.getItem('token');
+    const httpHeaders = new HttpHeaders(
+      {'Content-Type': 'application/json; charset=utf-8',
+      'Authorization': 'Token ' + token});
+    return { headers: httpHeaders};
   }
 }
 

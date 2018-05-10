@@ -12,6 +12,9 @@ class User_Details(models.Model):
     Country_Name = models.CharField(max_length=100)
     PinCode = models.IntegerField()
     Mobile_Number =  models.IntegerField()
+    Profile_Image = models.ImageField(upload_to='images',null=True)
+    Profile_Video = models.FileField(upload_to="videos",null=True)
+
 
 
     def __str__(self):

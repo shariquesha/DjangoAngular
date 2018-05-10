@@ -24,21 +24,11 @@ class UserViewSet(viewsets.ModelViewSet):
 class UserDetailViewSet(viewsets.ModelViewSet):
     queryset = User_Details.objects.all()
     serializer_class = UserDetailSerializer
+
     authentication_classes = (TokenAuthentication, SessionAuthentication)
     permission_classes = (IsAuthenticated,)
 
-    def get_object(self):
-        if self.request.method == 'PUT':
-            resource = User_Details.objects.filter(id=self.kwargs.get('pk')).first()
-            if resource:
-                return resource
-            else:
-                return User_Details(id=self.kwargs.get('pk'))
-        else:
-            return super(UserDetailViewSet, self).get_object()
-
-
-
+    
 class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)

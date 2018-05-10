@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-account',
@@ -15,9 +16,9 @@ export class AccountComponent implements OnInit {
       this.accountservice.getAccount().subscribe(data => this.users = data);
   }
 
-  update(post : any) {
+  add(post : any) {
     this.accountservice.updateAccount(post).subscribe(data => console.log('form submitted successfully'));
-    alert(JSON.stringify(post))
+    // alert(JSON.stringify(post))
 }
 
 }
