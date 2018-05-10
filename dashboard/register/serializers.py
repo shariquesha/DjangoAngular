@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from . import models
 from rest_framework import serializers
 
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -15,27 +14,28 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserDetailSerializer(serializers.ModelSerializer):
-    username = User()
 
+    Profile_Image = serializers.ImageField(max_length=None, allow_empty_file=False, use_url=True)
 
     class Meta:
         model = models.User_Details
 
-        fields = (
-            'User_id',
-            'id',
-            'First_Name',
-            'Last_Name',
-            'Street_Name',
-            'City_Name',
-            'State_Name',
-            'Country_Name',
-            'PinCode',
-            'Mobile_Number',
-            )
-        # fields = '__all__'
+        # fields = (
+        #     'User_id',
+        #     'id',
+        #     'First_Name',
+        #     'Last_Name',
+        #     'Street_Name',
+        #     'City_Name',
+        #     'State_Name',
+        #     'Country_Name',
+        #     'PinCode',
+        #     'Mobile_Number',
+        #     )
+        fields = '__all__'
+        lookup_field = 'User_id'
         extra_kwargs = {'User_id.password' : {'write_only': True, 'required': True}}
-        depth = 1
+        # depth = 1
 
     def create(self, validated_data):
         user_detail = models.User_Details.objects.create(**validated_data)

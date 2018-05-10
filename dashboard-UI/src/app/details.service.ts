@@ -14,28 +14,29 @@ export class DetailsService {
 
   getUsers():Observable<I_Details[]>
   {
-
-      return this.http.get<I_Details[]>(this._url+"/details/", this.getAuthHeaders());
+      var user = JSON.parse(localStorage.getItem('user'))
+      var id = user.id
+      return this.http.get<I_Details[]>(this._url+"/details/"+id+"/", this.getAuthHeaders());
   }
 
 
-  updateUsers(data : any):Observable<I_Details[]>
+  updateUsers(post :any , data : any):Observable<I_Details[]>
   {
 
    let headers = new HttpHeaders();
-   var id = data['id']
-   delete data['id']
+   var user = JSON.parse(localStorage.getItem('user'))
+   var id = user.id
 
-
-
-   return this.http.put<I_Details[]>(this._url+"/details/"+ id+"/",JSON.stringify(data), this.getAuthHeaders())
+   // console.log(JSON.stringify(data))
+   this.http.patch<I_Details[]>(this._url+"/details/"+ id+"/",data, this.getAuthHeaders())
+   headers.set('Content-Type', 'application/json; charset=utf-8')
+   return this.http.patch<I_Details[]>(this._url+"/details/"+ id+"/",data, this.getAuthHeaders())
   }
 
-   private getAuthHeaders() {
+     private getAuthHeaders() {
     const token = localStorage.getItem('token');
     const httpHeaders = new HttpHeaders(
-      {'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': 'Token ' + token});
+      {'Authorization': 'Token ' + token});
     return { headers: httpHeaders};
   }
 }

@@ -7,5 +7,6 @@ export interface I_Details
         State_Name: string,
         Country_Name: string,
         PinCode: number,
-        Mobile_Number: number
+        Mobile_Number: number,
+        Profile_Image : File,
 }

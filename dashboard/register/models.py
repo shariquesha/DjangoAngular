@@ -13,7 +13,8 @@ class User_Details(models.Model):
     PinCode = models.IntegerField()
     Mobile_Number =  models.IntegerField()
     Profile_Image = models.ImageField(upload_to='images',null=True)
-    Profile_Video = models.FileField(upload_to="videos",null=True)
+    # Profile_Video = models.FileField(upload_to="videos",null=True)
+
 
 
 
