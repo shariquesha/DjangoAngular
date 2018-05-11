@@ -13,7 +13,7 @@ private _url: string = "http://127.0.0.1:8000"
 
    loginUsers(data : any):Observable<IUser[]>
   {
-     alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
 
    let headers = new HttpHeaders();
    headers = headers.set('Content-Type', 'application/json; charset=utf-8');

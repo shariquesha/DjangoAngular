@@ -18,6 +18,7 @@ import { AccountService } from './account.service';
 
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -25,13 +26,15 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     AppRoutingComponents,
     DetailsComponent,
-    AccountComponent /* User Defined List in app-routinh.module.ts */
+    AccountComponent,
+    ProfileComponent /* User Defined List in app-routinh.module.ts */
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    
   ],
   providers: [UserService,DetailsService,LoginService,AccountService],
   bootstrap: [AppComponent]

@@ -9,4 +9,5 @@ export interface I_Details
         PinCode: number,
         Mobile_Number: number,
         Profile_Image : File,
+        User_id : number,
 }

@@ -1,3 +1,4 @@
+    <button (click)="Profile()">Profile</button>
     <table class="table table-dark table-hover">
     <thead>
       <tr>
@@ -8,30 +9,40 @@
     <tbody>
       <tr>
         <td>
+           <label>Profile_Image</label><br>
+            <img src="{{users.Profile_Image}}" alt="" height="250" width="250">
+              <input type="file" name="Profile_Image" (change)="Profile_Image_upload($event)"
+               src="{{users.Profile_Image}}" accept="image/*">
+               <br>
+
           <form #frm="ngForm" (ngSubmit)="update_details(frm.value)">
               <input type="hidden" name="User_id" [(ngModel)]="users.User_id"><br>
-              <label>First_Name</label><br>
+             
+             <label>First_Name</label><br>
               <input type="text" name="First_Name" [(ngModel)]="users.First_Name"><br>
-              <label>Last_Name</label><br>
+            
+            <label>Last_Name</label><br>
               <input type="text" name="Last_Name" [(ngModel)]="users.Last_Name"><br>
-              <label>Street_Name</label><br>
+            
+            <label>Street_Name</label><br>
               <input type="text" name="Street_Name" [(ngModel)]="users.Street_Name"><br>
-              <label>City_Name</label><br>
+            
+            <label>City_Name</label><br>
               <input type="text" name="City_Name" [(ngModel)]="users.City_Name"><br>
-              <label>State_Name</label><br>
+            
+            <label>State_Name</label><br>
               <input type="text" name="State_Name" [(ngModel)]="users.State_Name"><br>
-              <label>Country_Name</label><br>
+            
+            <label>Country_Name</label><br>
               <input type="text" name="Country_Name" [(ngModel)]="users.Country_Name"><br>
-              <label>PinCode</label><br>
+            
+            <label>PinCode</label><br>
               <input type="text" name="PinCode" [(ngModel)]="users.PinCode"><br>
-              <label>Mobile_Number</label><br>
+            
+            <label>Mobile_Number</label><br>
               <input type="text" name="Mobile_Number" [(ngModel)]="users.Mobile_Number"><br>
-
-              <label>Profile_Image</label><br>
-              <input type="file" name="Profile_Image" (change)="Profile_Image_upload($event)"
-               src="{{users.Profile_Image}}" accept="image/*"  ><br>
-
               <input type="submit" value="Update"><br>
+
           </form>
         </td>
       </tr>

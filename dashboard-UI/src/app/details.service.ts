@@ -20,20 +20,22 @@ export class DetailsService {
   }
 
 
-  updateUsers(post :any , data : any):Observable<I_Details[]>
+  updateUsers(data : any):Observable<I_Details[]>
   {
    var user = JSON.parse(localStorage.getItem('user'))
    
    var id = user.id
 
    
-  let headers = new HttpHeaders();
+  //  try {
+  //   this.http.post<I_Details[]>(this._url+"/details/",data, this.getAuthHeaders());
+  //   }
+  // catch(err) {
+  //  this.http.put<I_Details[]>(this._url+"/details/"+id+"/",data, this.getAuthHeaders());
+  // }
 
-   // console.log(JSON.stringify(data))
-   this.http.patch<I_Details[]>(this._url+"/details/"+ id+"/",data,this.getAuthHeaders());
 
-   headers.set('Content-Type', 'application/json; charset=utf-8')
-   return this.http.patch<I_Details[]>(this._url+"/details/"+ id+"/",post, this.getAuthHeaders());
+   return this.http.put<I_Details[]>(this._url+"/details/"+id+"/",data, this.getAuthHeaders());
 }
    getAuthHeaders()
    {
@@ -50,5 +52,3 @@ export class DetailsService {
 
    }
 }
-
-

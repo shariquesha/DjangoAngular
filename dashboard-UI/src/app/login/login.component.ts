@@ -24,12 +24,12 @@ export class LoginComponent implements OnInit {
   }
 
   loginClicked(data : any){
-      alert(JSON.stringify(data))
+      // alert(JSON.stringify(data))
       this.loginservice.loginUsers(data).subscribe(
         response => {
           localStorage.setItem('token',response['token']);
           localStorage.setItem('user',JSON.stringify(response['user']));
-          this.router.navigate(['/details']);
+          this.router.navigate(['/profile']);
         },
         error => {
             console.log('error',error);
