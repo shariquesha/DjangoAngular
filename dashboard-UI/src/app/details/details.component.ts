@@ -13,6 +13,7 @@ export class DetailsComponent implements OnInit {
    public Profile_Image: File;
    public Profile_Video: File;
    public User_id
+   public fake_url
   constructor(private detailservice : DetailsService,private router : Router) { }
 
   ngOnInit() {
@@ -20,10 +21,23 @@ export class DetailsComponent implements OnInit {
       var user = JSON.parse(localStorage.getItem('user'))
       this.User_id = user.id
       this.detailservice.getUsers().subscribe(data => this.users = data);
+      document.getElementById("new_image").style.display = "none";
+      document.getElementById("old_image").style.display = "block";
   }
 
   Profile_Image_upload(event) {
     this.Profile_Image  = event.target.files[0]
+    document.getElementById("new_image").style.display = "block";
+    document.getElementById("old_image").style.display = "none";
+     if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.fake_url = event.target.result;
+      }
+    }
   }
 
 
@@ -33,13 +47,6 @@ export class DetailsComponent implements OnInit {
   }
 
   update_details(post : any) {
-
-  //   console.log(this.Profile_Image);
-  //   post['Profile_Image'] = this.Profile_Image
-  //   this.detailservice.updateUsers(post).subscribe(data => {
-  //     console.log('form submitted successfully');
-  //   });
-  // }
 
   const uploadData = new FormData();
   uploadData.append('Profile_Image', this.Profile_Image);
@@ -60,6 +67,6 @@ export class DetailsComponent implements OnInit {
     {
         this.router.navigate(['/profile']);
     }
-    
+
 }
 }

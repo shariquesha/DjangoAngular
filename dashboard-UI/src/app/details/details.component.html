@@ -10,7 +10,8 @@
       <tr>
         <td>
            <label>Profile_Image</label><br>
-            <img src="{{users.Profile_Image}}" alt="" height="250" width="250">
+            <img src="{{users.Profile_Image}}" alt="" height="250" width="250" id="old_image" style="dispaly:block">
+            <img src="{{fake_url}}" id="new_image" style="dispaly:none" height="250" width="250">
               <input type="file" name="Profile_Image" (change)="Profile_Image_upload($event)"
                src="{{users.Profile_Image}}" accept="image/*">
                <br>
